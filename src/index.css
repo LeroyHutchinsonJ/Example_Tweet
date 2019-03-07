@@ -7,10 +7,43 @@
   font-family: "Helvetica", arial, sans-serif;
   font-size: 14px;
   line-height: 18px;
+  background-color: #261818;
 }
 .avatar {
   width: 48px;
   height: 48px;
   border-radius: 5px;
   margin-right: 10px;
+}
+.name {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  margin-right: 0.3em;
+  color: #a48e8e;
+}
+.handle {
+  color: #8899a6;
+  font-size: 13px;
+}
+.time {
+  padding-left: 0.3em;
+  color: #8899a6;
+}
+
+.time::before {
+  content: "\00b7";
+  padding-left: 0.3em;
+}
+
+.buttons {
+  margin-top: 10px;
+  margin-left: 2px;
+  font-size: 1.4em;
+  color: #aab8c2;
+}
+.buttons i {
+  width: 80px;
+}
+.message {
+  color: #a48e8e;
 }

@@ -41,8 +41,13 @@
   font-size: 1.4em;
   color: #aab8c2;
 }
+
 .buttons i {
-  width: 80px;
+  width: 70px;
+}
+.style-font {
+  font-size: 20px;
+  font-weight: 350;
 }
 .message {
   color: #a48e8e;

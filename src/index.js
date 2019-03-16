@@ -2,18 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import moment from "moment";
-
-var Tweet = ({}) => (
+import PropTypes from "prop-types";
+var Tweet = ({ Tweetname }) => (
   <div className="tweet">
-    <Avatar hash={testTweet.gravatar} />
+    <Avatar hash={Tweetname.gravatar} />
     <div className="content">
-      <NameWithHandle authorObject={testTweet.author} />
-      <Time timeWrote={testTweet.timestamp} />
-      <Message words={testTweet.message} />
+      <NameWithHandle authorObject={Tweetname.author} />
+      <Time timeWrote={Tweetname.timestamp} />
+      <Message words={Tweetname.message} />
       <div className="buttons">
         <ReplyButton />
-        <RetweetButton count={testTweet.retweets} />
-        <LikeButton count={testTweet.likes} />
+        <RetweetButton count={Tweetname.retweets} />
+        <LikeButton count={Tweetname.likes} />
         <MoreOptionsButton />
       </div>
     </div>
@@ -29,8 +29,8 @@ var testTweet = {
     name: "Leroy Hutchinson"
   },
   likes: 2,
-  retweets: 4,
-  timestamp: "2019-1-15 "
+  retweets: 5,
+  timestamp: "2019-01-25"
 };
 
 var Avatar = ({ hash }) => {
@@ -73,4 +73,20 @@ const MoreOptionsButton = () => (
   <i className="fa fa-ellipsis-h more-options-button" />
 );
 
-ReactDOM.render(<Tweet />, document.querySelector("#root"));
+Tweet.propTypes = {
+  Tweetname: PropTypes.shape({
+    likes: PropTypes.number.isRequired,
+    retweets: PropTypes.number.isRequired,
+    message: PropTypes.string,
+    timeWrote: PropTypes.string,
+    author: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      handle: PropTypes.string.isRequired
+    }).isRequired,
+    gravatar: PropTypes.string
+  })
+};
+ReactDOM.render(
+  <Tweet Tweetname={testTweet} />,
+  document.querySelector("#root")
+);

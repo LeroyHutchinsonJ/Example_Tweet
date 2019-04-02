@@ -1,8 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import moment from "moment";
 import PropTypes from "prop-types";
+import MoreOptionsButton from "./more-options-button";
+import LikeButton from "./like-button";
+import RetweetButton from "./retweet-button";
+import ReplyButton from "./reply-button";
+import Time from "./time";
+import NameWithHandle from "./name-with-handle";
+import Message from "./message";
+import Avatar from "./avatar";
+
 var Tweet = ({ Tweetname }) => (
   <div className="tweet">
     <Avatar hash={Tweetname.gravatar} />
@@ -32,46 +40,6 @@ var testTweet = {
   retweets: 5,
   timestamp: "2019-01-25"
 };
-
-var Avatar = ({ hash }) => {
-  var url = `https://www.gravatar.com/userimage/${hash}`;
-  return <img src={url} className="avatar" alt="avatar" />;
-};
-
-var Message = ({ words }) => <div className="message">{words}</div>;
-var NameWithHandle = ({ authorObject }) => {
-  const { name, handle } = authorObject;
-  return (
-    <span className="name-with-handle">
-      <span className="name">{name}</span>
-      <span className="handle">@{handle}</span>
-    </span>
-  );
-};
-
-const Time = ({ timeWrote }) => {
-  const timestring = moment(timeWrote).fromNow();
-  return <span className="time"> {timestring} </span>;
-};
-
-const ReplyButton = () => <i className="fa fa-reply reply-button" />;
-
-const RetweetButton = ({ count }) => (
-  <i className="fa fa-retweet">
-    {" "}
-    <span className="style-font">{count > 0 ? count : null}</span>
-  </i>
-);
-
-const LikeButton = ({ count }) => (
-  <i className="fa fa-heart">
-    <span className="style-font"> {count > 0 ? count : null}</span>
-  </i>
-);
-
-const MoreOptionsButton = () => (
-  <i className="fa fa-ellipsis-h more-options-button" />
-);
 
 Tweet.propTypes = {
   Tweetname: PropTypes.shape({

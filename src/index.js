@@ -11,17 +11,17 @@ import NameWithHandle from "./name-with-handle";
 import Message from "./message";
 import Avatar from "./avatar";
 
-var Tweet = ({ Tweetname }) => (
+var Tweet = ({ Tweet }) => (
   <div className="tweet">
-    <Avatar hash={Tweetname.gravatar} />
+    <Avatar hash={Tweet.gravatar} />
     <div className="content">
-      <NameWithHandle authorObject={Tweetname.author} />
-      <Time timeWrote={Tweetname.timestamp} />
-      <Message words={Tweetname.message} />
+      <NameWithHandle authorObject={Tweet.author} />
+      <Time timeWrote={Tweet.timestamp} />
+      <Message words={Tweet.message} />
       <div className="buttons">
         <ReplyButton />
-        <RetweetButton count={Tweetname.retweets} />
-        <LikeButton count={Tweetname.likes} />
+        <RetweetButton count={Tweet.retweets} />
+        <LikeButton count={Tweet.likes} />
         <MoreOptionsButton />
       </div>
     </div>
@@ -54,7 +54,4 @@ Tweet.propTypes = {
     gravatar: PropTypes.string
   })
 };
-ReactDOM.render(
-  <Tweet Tweetname={testTweet} />,
-  document.querySelector("#root")
-);
+ReactDOM.render(<Tweet Tweet={testTweet} />, document.querySelector("#root"));
